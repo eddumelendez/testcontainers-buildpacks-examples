@@ -1,3 +1,3 @@
 # Testcontainers' Buildpacks Example
 
-Before running on M1 `docker pull tianon/true` should be performed
+Before running using latest snapshots, `docker pull tianon/true` should be performed.
