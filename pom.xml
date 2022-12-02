@@ -39,10 +39,9 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>dev.snowdrop</groupId>
+			<groupId>com.github.snowdrop.java-buildpack-client</groupId>
 			<artifactId>buildpack-client</artifactId>
-			<version>0.0.6</version>
-			<scope>test</scope>
+			<version>main-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.docker-java</groupId>
@@ -54,6 +53,12 @@
 			<groupId>com.github.docker-java</groupId>
 			<artifactId>docker-java-transport</artifactId>
 			<version>3.2.14</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.java.dev.jna</groupId>
+			<artifactId>jna</artifactId>
+			<version>5.12.1</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -77,5 +82,12 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<repositories>
+		<repository>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</repository>
+	</repositories>
 
 </project>
