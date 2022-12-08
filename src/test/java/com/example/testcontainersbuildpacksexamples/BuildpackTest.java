@@ -29,6 +29,7 @@ public class BuildpackTest {
                 .withFinalImage("test-spring-app")
                 .withEnvironment(Map.of("BP_JVM_VERSION", "17.*"))
                 .withLogLevel("info")
+                .withNewSlf4jLogger("buildpack")
                 .build();
 
         try (GenericContainer<?> app = new GenericContainer<>("test-spring-app")
@@ -52,6 +53,7 @@ public class BuildpackTest {
                         entry("BP_NATIVE_IMAGE", "true"),
                         entry("BP_MAVEN_BUILD_ARGUMENTS", "-Pnative -Dmaven.test.skip=true --no-transfer-progress package")))
                 .withLogLevel("info")
+                .withNewSlf4jLogger("buildpack")
                 .build();
 
         try (GenericContainer<?> app = new GenericContainer<>("test-native-spring-app")
