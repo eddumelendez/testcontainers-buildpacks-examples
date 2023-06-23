@@ -65,7 +65,6 @@ public class BuildpackTest {
         Buildpack.builder().withDockerClient(dockerClient)
                 .addNewFileContent(finalFile)
                 .withFinalImage("test-spring-app")
-                .withEnvironment(Map.of("BP_JVM_VERSION", "17.*"))
                 .withLogLevel("info")
                 .withNewSlf4jLogger("buildpack")
                 .build();
@@ -81,11 +80,10 @@ public class BuildpackTest {
     void testNativeImage() {
         Buildpack.builder().withDockerClient(dockerClient)
                 .addNewFileContent(finalFile)
-                .withBuilderImage("paketobuildpacks/builder:tiny")
+                .withBuilderImage("paketobuildpacks/builder-jammy-tiny:latest")
                 .withFinalImage("test-native-spring-app")
-                .withEnvironment(Map.ofEntries(entry("BP_JVM_VERSION", "17.*"),
-                        entry("BP_NATIVE_IMAGE", "true"),
-                        entry("BP_MAVEN_BUILD_ARGUMENTS", "-Pnative -Dmaven.test.skip=true --no-transfer-progress package")))
+                .withEnvironment(Map.ofEntries(entry("BP_MAVEN_ACTIVE_PROFILES", "native"),
+                        entry("BP_NATIVE_IMAGE", "true")))
                 .withLogLevel("info")
                 .withNewSlf4jLogger("buildpack")
                 .build();
